@@ -16,18 +16,18 @@ class Main extends React.Component {
           id: PropTypes.number,
           name: PropTypes.string,
           description: PropTypes.string,
-          url: PropTypes.string
-        })
+          url: PropTypes.string,
+        }),
       ),
-      error: PropTypes.oneOfType([null, PropTypes.string])
-    }).isRequired
+      error: PropTypes.oneOfType([null, PropTypes.string]),
+    }).isRequired,
   }
 
   state = {
-    repositoryInput: ''
+    repositoryInput: '',
   }
 
-  handleAddRepository = event => {
+  handleAddRepository = (event) => {
     event.preventDefault()
     // call -> store/action/favorites/addFavoriteRequest
     this.props.addFavoriteRequest(this.state.repositoryInput)
@@ -45,14 +45,20 @@ class Main extends React.Component {
           />
           <button type="submit">Adicionar</button>
           {this.props.favorites.loading && <span>Carregando...</span>}
-          {!!this.props.favorites.error && <span>{this.props.favorites.error}</span>}
+          {!!this.props.favorites.error && (
+            <span>{this.props.favorites.error}</span>
+          )}
         </form>
 
         <ul>
           {this.props.favorites.data.map(favorite => (
             <li key={favorite.id}>
               <p>
-                <strong>{favorite.name}</strong> ({favorite.description})
+                <strong>{favorite.name}</strong>
+                {' '}
+(
+                {favorite.description}
+)
               </p>
               <a href={favorite.url}>Acessar</a>
             </li>
@@ -64,12 +70,12 @@ class Main extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  favorites: state.favorites
+  favorites: state.favorites,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(FavoritesActions, dispatch)
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Main)

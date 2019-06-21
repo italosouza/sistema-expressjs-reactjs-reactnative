@@ -5,7 +5,7 @@
 export const Types = {
   ADD_REQUEST: 'favorites/ADD_REQUEST',
   ADD_SUCCESS: 'favorites/ADD_SUCESS',
-  ADD_FAILURE: 'favorites/ADD_FAILURE'
+  ADD_FAILURE: 'favorites/ADD_FAILURE',
 }
 
 /**
@@ -15,7 +15,7 @@ export const Types = {
 const INITIAL_STATE = {
   loading: false,
   data: [],
-  error: null
+  error: null,
 }
 
 export default function favorites(state = INITIAL_STATE, action) {
@@ -24,7 +24,7 @@ export default function favorites(state = INITIAL_STATE, action) {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       }
 
     case Types.ADD_SUCCESS:
@@ -32,14 +32,14 @@ export default function favorites(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         error: null,
-        data: [...state.data, action.payload.data]
+        data: [...state.data, action.payload.data],
       }
 
     case Types.ADD_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload.error
+        error: action.payload.error,
       }
 
     default:
@@ -58,7 +58,7 @@ export const Creators = {
    */
   addFavoriteRequest: repository => ({
     type: Types.ADD_REQUEST,
-    payload: { repository }
+    payload: { repository },
   }),
 
   /**
@@ -67,11 +67,11 @@ export const Creators = {
    */
   addFavoriteSuccess: data => ({
     type: Types.ADD_SUCCESS,
-    payload: { data }
+    payload: { data },
   }),
 
   addFavoriteFailure: error => ({
     type: Types.ADD_FAILURE,
-    payload: { error }
-  })
+    payload: { error },
+  }),
 }
