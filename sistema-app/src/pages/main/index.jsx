@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // coisas do redux
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Creators as FavoritesActions } from '../../store/ducks/favorites'
+import { Creators as FavoritesActions } from 'store/ducks/favorites'
 
 class Main extends React.Component {
   static propTypes = {

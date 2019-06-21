@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
-import api from '../../services/api'
+import api from 'services/api'
 
-import { Creators as FavoriteActions } from '../ducks/favorites'
+import { Creators as FavoriteActions } from 'store/ducks/favorites'
 
 /**
  *

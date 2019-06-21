@@ -1,6 +1,6 @@
 import { all, takeLatest } from 'redux-saga/effects'
 
-import { Types as FavoritesTypes } from '../ducks/favorites'
+import { Types as FavoritesTypes } from 'store/ducks/favorites'
 import { addFavorite } from './favorites'
 
 /**

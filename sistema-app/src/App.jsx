@@ -1,9 +1,9 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 
-import './config/ReactotronConfig'
-import store from './store'
-import Routes from './routes'
+import 'config/ReactotronConfig'
+import store from 'store'
+import Routes from 'routes'
 
 /**
  * Create an App with all Action -> Saga -> Reducers globaly available

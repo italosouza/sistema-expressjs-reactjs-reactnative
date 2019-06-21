@@ -9,12 +9,12 @@ import createSagaMiddleware from 'redux-saga'
 /**
  * import all reduces
  */
-import reducers from './ducks'
+import reducers from 'store/ducks'
 
 /**
  * import all sagas
  */
-import sagas from './sagas'
+import sagas from 'store/sagas'
 
 /**
  * reactotron-redux-saga

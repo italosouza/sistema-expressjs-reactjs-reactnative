@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 const Header = () => <div />
 
 const mapStateToProps = state => ({
-  count: state.favorites.data.length,
+  count: state.favorites.data.length
 })
 
 // Header.propTypes = {

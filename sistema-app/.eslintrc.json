@@ -21,6 +21,10 @@
     "semi": "off",
     "max-len": 1,
     "no-console": "off",
+    "no-unresolved": "off",
+    "react/jsx-one-expression-per-line": {
+      "allow": "single-child"
+    },
     "react/jsx-filename-extension": [
       "error",
       {
@@ -35,5 +39,12 @@
         "argsIgnorePatter": "^_"
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
