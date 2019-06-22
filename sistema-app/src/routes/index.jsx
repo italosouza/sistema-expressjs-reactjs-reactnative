@@ -1,18 +1,38 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
-import Footer from 'components/Footer'
-import Main from 'pages/main'
+import { isAuthenticated } from 'services/auth'
+import Dashboard from 'layouts/Dashboard'
+import Login from 'pages/Login'
 
+// private routes can only be accessed by authed users - No ACL yet
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    exact
+    {...rest}
+    render={props => (isAuthenticated() ? (
+      <Component {...props} />
+    ) : (
+      <Redirect
+        to={{ pathname: '/login', state: { from: props.location } }}
+      />
+    ))
+    }
+  />
+)
+
+PrivateRoute.propTypes = { component: PropTypes.func.isRequired }
+
+const hist = createBrowserHistory()
 const Routes = () => (
-  <BrowserRouter>
-    <>
-      <Switch>
-        <Route exact path="/" component={Main} />
-      </Switch>
-      <Footer />
-    </>
-  </BrowserRouter>
+  <Router history={hist}>
+    <Switch>
+      <Route exact path="/login" component={Login} />
+      <PrivateRoute exact path="/" component={Dashboard} />
+    </Switch>
+  </Router>
 )
 
 export default Routes
