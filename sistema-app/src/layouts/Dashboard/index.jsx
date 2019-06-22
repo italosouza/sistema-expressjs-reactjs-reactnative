@@ -4,6 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { logout } from 'services/auth'
 import dashboardRoutes from 'routes/dashboard'
 
+import Header from 'components/Header'
+
 import './App.scss'
 
 const switchRoutes = (
@@ -68,7 +70,7 @@ class Dashboard extends React.Component {
         </nav>
 
         <main>
-          <h1>Pedidos {match.url}</h1>
+          <Header match={match} />
           {switchRoutes}
         </main>
       </div>

@@ -30,7 +30,7 @@ const Routes = () => (
   <Router history={hist}>
     <Switch>
       <Route exact path="/login" component={Login} />
-      <PrivateRoute exact path="/" component={Dashboard} />
+      <PrivateRoute path="/" component={Dashboard} />
     </Switch>
   </Router>
 )

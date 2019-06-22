@@ -1,16 +1,11 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-const Header = () => <div>header</div>
+const Header = ({ match }) => <h1>Pedidos {match.url}</h1>
 
-const mapStateToProps = state => ({
-  count: state.favorites.data.length
-})
+Header.propTypes = { match: PropTypes.shape.isRequired }
 
-// Header.propTypes = {
-//   count: PropTypes.number.isRequired,
-// }
+const mapStateToProps = state => ({ count: state.favorites.data.length })
 
 export default connect(mapStateToProps)(Header)
