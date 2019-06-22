@@ -15,6 +15,6 @@ const PedidoRouter = ({ match }) => (
   </>
 )
 
-PedidoRouter.propTypes = { match: PropTypes.shape.isRequired }
+PedidoRouter.propTypes = { match: PropTypes.shape({}).isRequired }
 
 export default PedidoRouter

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import { logout } from 'services/auth'
 import dashboardRoutes from 'routes/dashboard'
 
@@ -20,10 +20,7 @@ const switchRoutes = (
 )
 
 class Dashboard extends React.Component {
-  static propTypes = {
-    history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-    match: PropTypes.shape().isRequired
-  }
+  static propTypes = { history: PropTypes.shape({ push: PropTypes.func }).isRequired }
 
   handleLogout = event => {
     event.preventDefault()
@@ -34,7 +31,7 @@ class Dashboard extends React.Component {
 
   render() {
     const { match } = this.props
-    console.log(match)
+
     return (
       <div className="wrapper">
         <nav>
@@ -47,12 +44,10 @@ class Dashboard extends React.Component {
               <span>Navegação</span>
             </li>
             <li>
-              <a href="/" className="active">
-                Painel
-              </a>
+              <Link to="/pedido">Pedidos</Link>
             </li>
             <li>
-              <a href="/">Estatisticas</a>
+              <Link to="/pedido/edit/1">Detalhes</Link>
             </li>
             <li>
               <a href="/">Mapa</a>

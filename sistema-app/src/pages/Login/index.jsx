@@ -24,9 +24,9 @@ export default class Login extends React.Component {
     this.setState({ mensagem: '' })
 
     // mock
-    login('12345')
+    // login('12345')
     const { history } = this.props
-    history.push('/')
+    // history.push('/')
     // end-mock
 
     try {
@@ -48,7 +48,6 @@ export default class Login extends React.Component {
     const { loginData } = this.state
     const data = { ...loginData, [name]: value }
     this.setState({ loginData: data })
-    console.log('ok')
   }
 
   render() {

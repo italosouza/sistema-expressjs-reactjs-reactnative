@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
-@import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 
 $color: #404040;
 $color-d: darken($color, 5%);
@@ -15,7 +15,7 @@ $color-l: lighten($color, 7.5%);
 
 *:before,
 *:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
 }
@@ -23,11 +23,10 @@ $color-l: lighten($color, 7.5%);
 html,
 body {
   height: 100%;
-  
 }
 
 body {
-  font: 15px/1 "Open Sans", sans-serif;
+  font: 15px/1 'Open Sans', sans-serif;
   color: #777;
 }
 
@@ -70,14 +69,14 @@ nav header span {
 }
 
 nav header span:before {
-  content: "\f007";
+  content: '\f007';
   font: normal 20px fontawesome;
   top: 7px;
   left: 9px;
 }
 
 nav header a:before {
-  content: "\f08b";
+  content: '\f08b';
   font: normal 20px fontawesome;
   top: 28px;
   right: 15px;
@@ -111,34 +110,34 @@ nav ul a:before {
 }
 
 nav ul li:nth-child(2) a:before {
-  content: "\f00a";
+  content: '\f00a';
 }
 nav ul li:nth-child(3) a:before {
-  content: "\f012";
+  content: '\f012';
 }
 nav ul li:nth-child(4) a:before {
-  content: "\f018";
+  content: '\f018';
 }
 nav ul li:nth-child(5) a:before {
-  content: "\f024";
+  content: '\f024';
 }
 nav ul li:nth-child(6) a:before {
-  content: "\f0c3";
+  content: '\f0c3';
 }
 nav ul li:nth-child(7) a:before {
-  content: "\f09b";
+  content: '\f09b';
 }
 nav ul li:nth-child(8) a:before {
-  content: "\f0fa";
+  content: '\f0fa';
 }
 nav ul li:nth-child(10) a:before {
-  content: "\f002";
+  content: '\f002';
 }
 nav ul li:nth-child(11) a:before {
-  content: "\f085";
+  content: '\f085';
 }
 nav ul li:nth-child(12) a:before {
-  content: "\f08b";
+  content: '\f08b';
 }
 
 main {
@@ -160,6 +159,7 @@ main h1 {
 
 .flex-grid {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .flex-grid > div {
@@ -169,6 +169,17 @@ main h1 {
   border: 1px solid #ddd;
   background: #fff;
   border-radius: 8px;
+  flex-basis: content;
+}
+
+.flex-grid > div > h2 {
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+}
+
+.flex-grid > div > h2 > div {
+  flex: 1;
 }
 
 .flex-grid > div:last-child {
@@ -190,7 +201,7 @@ main h1 {
 }
 
 .flex-grid li:before {
-  content: "\f00c";
+  content: '\f00c';
   font: normal 16px fontawesome;
   top: 0;
   left: 0;
@@ -202,7 +213,6 @@ main h1 {
 ***********************************************************/
 
 @media (max-width: 1000px) {
-  
   .flex-grid {
     flex-direction: column;
   }
