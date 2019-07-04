@@ -43,7 +43,7 @@ routes.post(
 routes.get('/files/:file', controllers.FileController.show)
 
 // rotas a sequir requerem Token de autenticação
-// routes.use(authMiddleware)
+routes.use(authMiddleware)
 
 // vm
 // routes.get('/vm', handler(controllers.VmController.index))

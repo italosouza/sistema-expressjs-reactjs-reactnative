@@ -1,9 +1,9 @@
 module.exports = {
   dialect: 'mysql',
-  host: 'localhost',
-  username: 'root',
-  password: 'coreapp-pass',
-  database: 'coreapp',
+  host: 'remotemysql.com',
+  username: 'cRrYgS0LOf',
+  password: 'XZeQ8kLkSE',
+  database: 'cRrYgS0LOf',
   operatorAlias: true,
   define: {
     timestamps: true,

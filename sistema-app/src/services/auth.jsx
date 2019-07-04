@@ -2,21 +2,12 @@ const TOKEN_KEY = '@SecretToken:token'
 const USER_KEY = '@SecretToken:userid'
 const USER_DATA = '@SecretToken:user'
 
-export const isAuthenticated = () => {
-  // TODO: improve authentication validation
-  return sessionStorage.getItem(TOKEN_KEY) !== null
-}
+export const isAuthenticated = () => sessionStorage.getItem(TOKEN_KEY) !== null
 
-export const getToken = () => {
-  return sessionStorage.getItem(TOKEN_KEY)
-}
-export const getUserID = () => {
-  return sessionStorage.getItem(USER_KEY)
-}
+export const getToken = () => sessionStorage.getItem(TOKEN_KEY)
+export const getUserID = () => sessionStorage.getItem(USER_KEY)
 
-export const getUser = () => {
-  return JSON.parse(sessionStorage.getItem(USER_DATA))
-}
+export const getUser = () => JSON.parse(sessionStorage.getItem(USER_DATA))
 
 export const login = data => {
   sessionStorage.setItem(TOKEN_KEY, data.token)

@@ -4,7 +4,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
 import { isAuthenticated } from 'services/auth'
-import Dashboard from 'layouts/Dashboard'
+import Admin from 'layouts/Admin'
 import Login from 'pages/Login'
 
 // private routes can only be accessed by authed users - No ACL yet
@@ -30,7 +30,7 @@ const Routes = () => (
   <Router history={hist}>
     <Switch>
       <Route exact path="/login" component={Login} />
-      <PrivateRoute path="/" component={Dashboard} />
+      <PrivateRoute path="/" component={Admin} />
     </Switch>
   </Router>
 )

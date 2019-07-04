@@ -2,9 +2,10 @@
  * Types
  */
 export const Types = {
-  ADD_REQUEST: 'favorites/ADD_REQUEST',
-  ADD_SUCCESS: 'favorites/ADD_SUCCESS',
-  ADD_FAILURE: 'favorites/ADD_FAILURE'
+  ADD_REQUEST: 'pedidos/ADD_REQUEST',
+  LIST_REQUEST: 'pedidos/LIST_REQUEST',
+  ADD_SUCCESS: 'pedidos/ADD_SUCCESS',
+  ADD_FAILURE: 'pedidos/ADD_FAILURE'
 }
 
 /**
@@ -21,7 +22,7 @@ const INITIAL_STATE = {
  * @param {*} state
  * @param {*} action
  */
-export default function favorites(state = INITIAL_STATE, action) {
+export default function pedidos(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_REQUEST:
       return {
@@ -58,16 +59,21 @@ export const Creators = {
    * Called from components, should be mapped in /sagas/index.jsx
    * @param {*} repository
    */
-  addFavoriteRequest: repository => ({
+  addPedidoRequest: repository => ({
     type: Types.ADD_REQUEST,
     payload: { repository }
+  }),
+
+  RequestListaPedido: () => ({
+    type: Types.LIST_REQUEST,
+    payload: {}
   }),
 
   /**
    * Called from Saga after Request
    * @param {*} data
    */
-  addFavoriteSuccess: data => ({
+  addPedidoSuccess: data => ({
     type: Types.ADD_SUCCESS,
     payload: { data }
   }),
@@ -75,7 +81,7 @@ export const Creators = {
   /**
    *  Called from Saga after Request Failure
    */
-  addFavoriteFailure: error => ({
+  addPedidoFailure: error => ({
     type: Types.ADD_FAILURE,
     payload: { error }
   })

@@ -11,7 +11,9 @@ import './App.scss'
 const switchRoutes = (
   <Switch>
     {dashboardRoutes.map(prop => {
-      if (prop.redirect) return <Redirect from={prop.path} to={prop.to} key={prop.path} />
+      if (prop.redirect) {
+        return <Redirect from={prop.path} to={prop.to} key={prop.path} />
+      }
       return (
         <Route path={prop.path} component={prop.component} key={prop.path} />
       )

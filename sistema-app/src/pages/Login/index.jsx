@@ -23,19 +23,14 @@ export default class Login extends React.Component {
     event.preventDefault()
     this.setState({ mensagem: '' })
 
-    // mock
-    // login('12345')
     const { history } = this.props
-    // history.push('/')
-    // end-mock
 
     try {
       const { loginData } = this.state
-      const response = await api.post('/api/login', loginData)
-      login(response.data.token)
+      const response = await api.post('/api/session', loginData)
+      login(response.data)
       history.push('/')
     } catch (err) {
-      console.log(err)
       this.setState({ mensagem: 'Não foi possível realizar o login' })
     }
   }
@@ -67,15 +62,19 @@ export default class Login extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <input
                   className="Textbox"
-                  id="NameorEmail"
+                  name="email"
+                  id="email"
                   type="email"
                   placeholder="E-mail"
+                  onChange={this.handleChange}
                 />
                 <input
                   className="Textbox"
+                  name="password"
                   id="passbox"
                   type="password"
                   placeholder="Senha"
+                  onChange={this.handleChange}
                 />
                 {!!mensagem && <span>{mensagem}</span>}
                 <div className="forgot-password">
