@@ -39,20 +39,11 @@ routes.post(
   handler(controllers.SessionController.store)
 )
 
-// routes.post('/api/user', upload.single('avatar'), controllers.UserController.store)
 routes.get('/files/:file', controllers.FileController.show)
 
 // rotas a sequir requerem Token de autenticação
 routes.use(authMiddleware)
 
-// vm
-// routes.get('/vm', handler(controllers.VmController.index))
-// routes.get('/vm/:id', handler(controllers.VmController.show))
-// routes.post('/vm', validate(validators.Vm), handler(controllers.VmController.store))
-// routes.put('/vm/:id', validate(validators.Vm), handler(controllers.VmController.update))
-// routes.delete('/vm/:id', handler(controllers.VmController.destroy))
-
-// routes.post('/vm/join/:id', handler(controllers.VmController.join))
 // routes.post('/vm/leave/:id', handler(controllers.VmController.leave))
 
 // user -
@@ -71,6 +62,7 @@ routes.delete('/api/endereco/:id', controllers.EnderecoController.destroy)
 
 // produto -
 routes.get('/api/produto', controllers.ProdutoController.index)
+routes.get('/api/show/produto', controllers.ProdutoController.listarProdutosDisponiveis)
 routes.get('/api/produto/:id', controllers.ProdutoController.show)
 routes.post('/api/produto', controllers.ProdutoController.store)
 routes.put('/api/produto/:id', controllers.ProdutoController.update)
@@ -79,7 +71,7 @@ routes.delete('/api/produto/:id', controllers.ProdutoController.destroy)
 // tipo -
 routes.get('/api/tipo', controllers.TipoController.index)
 routes.get('/api/tipo/:id', controllers.TipoController.show)
-routes.post('/api/tipo', controllers.TipoController.store)
+routes.post('/api/tipo', upload.single('url'), controllers.TipoController.store)
 routes.put('/api/tipo/:id', controllers.TipoController.update)
 routes.delete('/api/tipo/:id', controllers.TipoController.destroy)
 

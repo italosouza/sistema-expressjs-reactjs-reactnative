@@ -3,34 +3,28 @@ import api from 'services/api'
 
 import { Creators as PedidosActions } from 'store/ducks/pedidos'
 
-/**
- *
- * @param {*} action data from AddFavoriteRequest
- */
-export function* listRequest(action) {
+export function* listRequest() {
   try {
-    const { data } = yield call(api.get, `/repos/${action.payload.repository}`)
+    const { data } = yield call(api.get, '/api/pedido')
 
-    const isDuplicated = yield select(state => {
-      state.favorites.data.find(favorite => favorite.id === data.id)
-    })
+    yield put(PedidosActions.listSuccess(data))
+  } catch (err) {
+    yield put(PedidosActions.listFailure('Erro ao adicionar pedido'))
+  }
+}
+
+export function* addPedido(action) {
+  try {
+    const { data } = action.payload
+
+    const isDuplicated = yield select(state => state.pedidos.data.find(item => item.id === data.id))
 
     if (isDuplicated) {
       yield put(PedidosActions.addFailure('Pedido duplicado'))
     } else {
-      const repositoryData = {
-        id: data.id,
-        name: data.full_name,
-        description: data.description,
-        url: data.html_url
-      }
-
-      /**
-       * Execute AddFavoriteSuccess Action, which have an reducer listening for changes
-       */
-      yield put(PedidosActions.addSuccess(repositoryData))
+      yield put(PedidosActions.addSuccess(data))
     }
   } catch (err) {
-    yield put(PedidosActions.addFailure('Erro ao adicionar pedido'))
+    yield put(PedidosActions.addFailure('Erro ao adicionar Pedido'))
   }
 }

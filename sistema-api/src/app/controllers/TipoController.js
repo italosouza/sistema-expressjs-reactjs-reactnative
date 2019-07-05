@@ -38,6 +38,9 @@ class TipoController {
    */
   async store(req, res) {
     try {
+      const { filename: url } = req.file
+      req.body.url = url
+
       const tipo = await Tipo.create({ ...req.body })
       req.io.emit('tipo store', tipo)
 

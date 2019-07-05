@@ -11,7 +11,7 @@ module.exports = {
           avatar: 'placeholder.png',
           created_at: new Date(),
           updated_at: new Date(),
-          password_hash: 'admin',
+          password_hash: '$2a$08$hWroPAqtY3wAniorUOMH3OTBsAzbMnRM1mZRHn7l2JDygE7FYO2rS', // 123456
           admin: true
         }
       ],
@@ -20,10 +20,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('users', [
-      {
-        email: 'admin@sistema.com'
-      }
-    ])
+    const Op = Sequelize.Op
+    return queryInterface.bulkDelete('users', { email: { [Op.eq]: 'admin@sistema.com' } }, {})
   }
 }

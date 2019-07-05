@@ -24,6 +24,66 @@ class ProdutoController {
     }
   }
 
+  async listarProdutosDisponiveis(req, res) {
+    const filters = {}
+
+    if (req.query.available) {
+      filters.available = req.query.available
+    }
+
+    if (req.query.name) {
+      filters.name = new RegExp(req.query.name, 'i')
+    }
+
+    try {
+      const list = await Produto.findAll(filters)
+
+      return res.json(list)
+    } catch (err) {
+      return res.json(err)
+    }
+  }
+
+  async listarTipoPorProduto(req, res) {
+    const filters = {}
+
+    if (req.query.available) {
+      filters.available = req.query.available
+    }
+
+    if (req.query.name) {
+      filters.name = new RegExp(req.query.name, 'i')
+    }
+
+    try {
+      const list = await Produto.findAll(filters)
+
+      return res.json(list)
+    } catch (err) {
+      return res.json(err)
+    }
+  }
+
+  async listarTamanhoPorProduto(req, res) {
+    const filters = {}
+
+    if (req.query.available) {
+      filters.available = req.query.available
+    }
+
+    if (req.query.name) {
+      filters.name = new RegExp(req.query.name, 'i')
+    }
+
+    try {
+      const list = await Produto.findAll(filters)
+
+      return res.json(list)
+    } catch (err) {
+      return res.json(err)
+    }
+  }
+
   /**
    * GET/:ID
    */

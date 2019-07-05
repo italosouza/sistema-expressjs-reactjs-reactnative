@@ -14,26 +14,17 @@ import { GridContainer } from './style'
 class PedidoList extends Component {
   async componentDidMount() {
     this.subscribeToEvents()
-    // this.props.RequestListaPedidos()
-    console.log(this.props)
 
-    // try {
-    //   const response = await api.get('/api/pedido')
-    //   this.setState({ lista: response.data })
-    // } catch (err) {
-    //   console.warn(err)
-    // }
+    const { listRequest } = this.props
+    listRequest()
   }
 
   subscribeToEvents = () => {
     const io = socket(config.baseURL)
 
     io.on('pedido store', data => {
-      const { lista } = this.state
-      lista.push(data)
-      this.setState({ lista })
-      // TODO: add redux
-      // this.props.addFavoriteRequest(data)
+      const { addSuccess } = this.props
+      addSuccess(data)
     })
   }
 
@@ -46,59 +37,42 @@ class PedidoList extends Component {
           <div className="grid">
             <div className="grid-item">
               <h3>Últimos pedidos</h3>
+              {pedidos.loading && <span>Carregando...</span>}
             </div>
           </div>
         </GridContainer>
 
         <GridContainer>
           <div className="grid">
-            <div className="grid-item large pedido">
-              <div className="titulo">
-                Pedido <strong>#1</strong> - Ítalo Andrade de souza
-              </div>
-              <small>há 2 segundos</small>
-              <div className="valor">R$ 42,00</div>
-              <hr />
-              <GridContainer flexAlign="flex-start">
-                <div className="grid-item small">
-                  <img src="imagens/Pizzas/1.png" alt="" />
-                  <div>
-                    <div>Pizza Calabresa</div>
-                    <small>Tamanho: Média</small>
-                  </div>
+            {pedidos.data.map(pedido => (
+              <div className="grid-item large pedido" key={pedido.id}>
+                <div className="titulo">
+                  Pedido <strong>{pedido.id}</strong> - Ítalo Andrade de souza
                 </div>
-              </GridContainer>
-              <hr />
-              <div className="observacao">
-                <strong>Observações:</strong> Favor remover tomate
-              </div>
-            </div>
-          </div>
-        </GridContainer>
-
-        <div className="flex-grid">
-          {pedidos.data.map(pedido => (
-            <div key={pedido.id}>
-              <h2>
-                <div>
-                  Pedido: <strong>{pedido.id}</strong> Valor: R$ {pedido.valor}{' '}
-                  -{' '}
+                <small>
                   <Moment fromNow locale="pt-br">
                     <strong>{pedido.createdAt}</strong>
                   </Moment>
+                </small>
+                <div className="valor">R$ 42,00</div>
+                <hr />
+                <GridContainer flexAlign="flex-start">
+                  <div className="grid-item small">
+                    <img src="imagens/Pizzas/1.png" alt="" />
+                    <div>
+                      <div>Pizza Calabresa</div>
+                      <small>Tamanho: Média</small>
+                    </div>
+                  </div>
+                </GridContainer>
+                <hr />
+                <div className="observacao">
+                  <strong>Observações:</strong> Favor remover tomate
                 </div>
-                <div>
-                  <button type="button">OK</button>
-                </div>
-              </h2>
-              <ul>
-                <li>Pizza Calabresa media</li>
-                <li>Pizza Peperoni pequena</li>
-                <li>Refrigerante coca 1 litro</li>
-              </ul>
-            </div>
-          ))}
-        </div>
+              </div>
+            ))}
+          </div>
+        </GridContainer>
       </>
     )
   }

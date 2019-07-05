@@ -2,8 +2,10 @@
  * Types
  */
 export const Types = {
-  ADD_REQUEST: 'pedidos/ADD_REQUEST',
   LIST_REQUEST: 'pedidos/LIST_REQUEST',
+  LIST_SUCCESS: 'pedidos/LIST_SUCCESS',
+  LIST_FAILURE: 'pedidos/LIST_FAILURE',
+  ADD_REQUEST: 'pedidos/ADD_REQUEST',
   ADD_SUCCESS: 'pedidos/ADD_SUCCESS',
   ADD_FAILURE: 'pedidos/ADD_FAILURE'
 }
@@ -24,6 +26,21 @@ const INITIAL_STATE = {
  */
 export default function pedidos(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case Types.LIST_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case Types.LIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        data: action.payload.data
+      }
+
     case Types.ADD_REQUEST:
       return {
         ...state,
@@ -55,25 +72,31 @@ export default function pedidos(state = INITIAL_STATE, action) {
  * ACTIONS
  */
 export const Creators = {
-  /**
-   * Called from components, should be mapped in /sagas/index.jsx
-   * @param {*} repository
-   */
-  addPedidoRequest: repository => ({
-    type: Types.ADD_REQUEST,
-    payload: { repository }
-  }),
-
-  RequestListaPedido: () => ({
+  listRequest: () => ({
     type: Types.LIST_REQUEST,
     payload: {}
+  }),
+
+  listSuccess: data => ({
+    type: Types.LIST_SUCCESS,
+    payload: { data }
+  }),
+
+  listFailure: error => ({
+    type: Types.LIST_FAILURE,
+    payload: { error }
+  }),
+
+  addRequest: data => ({
+    type: Types.ADD_REQUEST,
+    payload: { data }
   }),
 
   /**
    * Called from Saga after Request
    * @param {*} data
    */
-  addPedidoSuccess: data => ({
+  addSuccess: data => ({
     type: Types.ADD_SUCCESS,
     payload: { data }
   }),
@@ -81,7 +104,7 @@ export const Creators = {
   /**
    *  Called from Saga after Request Failure
    */
-  addPedidoFailure: error => ({
+  addFailure: error => ({
     type: Types.ADD_FAILURE,
     payload: { error }
   })
