@@ -23,6 +23,7 @@ class PedidoList extends Component {
     const io = socket(config.baseURL)
 
     io.on('pedido store', data => {
+      console.log(data)
       const { addSuccess } = this.props
       addSuccess(data)
     })
@@ -47,27 +48,31 @@ class PedidoList extends Component {
             {pedidos.data.map(pedido => (
               <div className="grid-item large pedido" key={pedido.id}>
                 <div className="titulo">
-                  Pedido <strong>{pedido.id}</strong> - Ítalo Andrade de souza
+                  Pedido <strong>#{pedido.id}</strong> - {pedido.User.name}
                 </div>
                 <small>
                   <Moment fromNow locale="pt-br">
                     <strong>{pedido.createdAt}</strong>
                   </Moment>
                 </small>
-                <div className="valor">R$ 42,00</div>
+                <div className="valor">R$ {pedido.valor}</div>
                 <hr />
                 <GridContainer flexAlign="flex-start">
-                  <div className="grid-item small">
-                    <img src="imagens/Pizzas/1.png" alt="" />
-                    <div>
-                      <div>Pizza Calabresa</div>
-                      <small>Tamanho: Média</small>
+                  {pedido.PedidoProduto.map(item => (
+                    <div className="grid-item small" key={item.id}>
+                      <img src="imagens/Pizzas/1.png" alt="" />
+                      <div>
+                        <div>
+                          {item.Produto.name} {item.Tipo.name}
+                        </div>
+                        <small>Tamanho: {item.Tamanho.name}</small>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </GridContainer>
                 <hr />
                 <div className="observacao">
-                  <strong>Observações:</strong> Favor remover tomate
+                  <strong>Observações:</strong> {pedido.obs}
                 </div>
               </div>
             ))}

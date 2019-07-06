@@ -7,19 +7,27 @@ module.exports = {
       [
         {
           name: 'Calabresa',
-          url: '1.png'
+          url: '1.png',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           name: 'Peperoni',
-          url: '2.png'
+          url: '2.png',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           name: 'Quatro-Queijos',
-          url: '3.png'
+          url: '3.png',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           name: 'Portuguesa',
-          url: '5.png'
+          url: '5.png',
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ],
       {}

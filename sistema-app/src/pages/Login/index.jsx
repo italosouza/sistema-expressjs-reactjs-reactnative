@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import api from 'services/api'
 import { login, isAuthenticated } from 'services/auth'
 
-import './Login.scss'
-import avatar from 'assets/logo.png'
+import GlobalStyle from './global'
+import { LoginContainer } from './style'
 
 export default class Login extends React.Component {
   static propTypes = { history: PropTypes.shape({ push: PropTypes.func }).isRequired }
@@ -31,7 +31,7 @@ export default class Login extends React.Component {
       login(response.data)
       history.push('/')
     } catch (err) {
-      this.setState({ mensagem: 'Não foi possível realizar o login' })
+      this.setState({ mensagem: err.data.error })
     }
   }
 
@@ -49,21 +49,14 @@ export default class Login extends React.Component {
     const { mensagem } = this.state
     return (
       <>
-        <div className="container" />
-        <div>
-          <div className="login mds-3">
-            <img
-              id="Avimg"
-              className="avatar mds-2"
-              src={avatar}
-              alt="avatar"
-            />
-            <div className="content">
+        <GlobalStyle />
+        <LoginContainer>
+          <div className="login">
+            <div>
               <form onSubmit={this.handleSubmit}>
                 <input
                   className="Textbox"
                   name="email"
-                  id="email"
                   type="email"
                   placeholder="E-mail"
                   onChange={this.handleChange}
@@ -71,29 +64,19 @@ export default class Login extends React.Component {
                 <input
                   className="Textbox"
                   name="password"
-                  id="passbox"
                   type="password"
                   placeholder="Senha"
                   onChange={this.handleChange}
                 />
-                {!!mensagem && <span>{mensagem}</span>}
-                <div className="forgot-password">
-                  <a href="/" id="fp-btn" className="btn-fp">
-                    Esqueceu a senha?
-                  </a>
-                </div>
-                <div>
-                  <button type="submit" className="btn btn-log btn-normal">
-                    Login
-                  </button>
-                  <button type="button" className="btn btn-log btn-register">
-                    Registrar
-                  </button>
+
+                <div className="actions">
+                  <button type="submit">Login</button>
                 </div>
               </form>
             </div>
+            <div className="aviso">{!!mensagem && <span>{mensagem}</span>}</div>
           </div>
-        </div>
+        </LoginContainer>
       </>
     )
   }

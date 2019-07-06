@@ -23,6 +23,13 @@ export const MenuContainer = styled.div`
         .logout {
           font-size: 0.8em;
           color: rgba(255, 255, 255, 0.6);
+
+          button {
+            border: none;
+            background: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+          }
         }
       }
 

@@ -20,7 +20,7 @@ export const GridContainer = styled.div`
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: 0 1px 8px 4px rgba(150, 150, 150, 0.1);
-      width: 700px;
+      width: 750px;
 
       @media (max-width: 600px) {
         width: 500px;

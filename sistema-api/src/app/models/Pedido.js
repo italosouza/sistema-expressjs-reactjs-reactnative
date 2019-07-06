@@ -4,13 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       situacao: {
         type: DataTypes.CHAR,
         defaultValue: 'A'
       },
-      valor: DataTypes.DOUBLE
+      valor: DataTypes.DOUBLE,
+      obs: DataTypes.STRING
     },
     {
       freezeTableName: true,
@@ -21,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   Pedido.associate = models => {
     Pedido.belongsTo(models.User, { foreignKey: 'id_usuario' })
     Pedido.belongsTo(models.Endereco, { foreignKey: 'id_endereco' })
+    Pedido.hasMany(models.PedidoProduto, { as: 'PedidoProduto', foreignKey: 'id_pedido' })
   }
 
   return Pedido

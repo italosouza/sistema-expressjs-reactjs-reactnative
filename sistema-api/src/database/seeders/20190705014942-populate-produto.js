@@ -6,13 +6,19 @@ module.exports = {
       'produto',
       [
         {
-          name: 'Pizza'
+          name: 'Pizza',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
-          name: 'Massas'
+          name: 'Massas',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
-          name: 'Bebidas'
+          name: 'Bebidas',
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ],
       {}

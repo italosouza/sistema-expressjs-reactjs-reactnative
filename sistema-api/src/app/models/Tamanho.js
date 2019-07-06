@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
   const Tamanho = sequelize.define(
     'Tamanho',
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
       name: DataTypes.STRING
     },
     {

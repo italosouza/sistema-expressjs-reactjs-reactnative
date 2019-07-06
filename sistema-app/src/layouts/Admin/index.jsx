@@ -1,5 +1,5 @@
 import React from 'react'
-import { getUser } from 'services/auth'
+import { getUser, logout } from 'services/auth'
 import LayoutRouter from 'components/LayoutRouter'
 import GlobalStyle from './globalStyle'
 import { MenuContainer } from './style'
@@ -13,7 +13,11 @@ const Admin = () => (
         <div className="group">
           <div className="links">
             <div className="user">{getUser().name}</div>
-            <div className="logout">Sair do app</div>
+            <div className="logout">
+              <button type="button" onClick={() => logout(true)}>
+                Sair do app
+              </button>
+            </div>
           </div>
           <div className="vertical-line" />
           <img src="imagens/logo.svg" alt="Logo" />

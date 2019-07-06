@@ -5,7 +5,6 @@ const dashboardRoutes = [
     path: '/pedido',
     sidebarName: 'Pedidos',
     navbarName: 'Pedidos',
-    // icon: Person,
     component: PedidoRouter
   },
   {

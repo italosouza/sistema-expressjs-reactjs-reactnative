@@ -55,3 +55,8 @@ npx sequelize db:seed:undo
 ```bash
 npx sequelize db:seed:all
 ```
+
+### About
+
+    When we link two model in Sequelize we can refer them as pairs of `source` and `target` models.
+    `hasOne` and `belongsTo` insert the association key in different models from each other. `hasOne` inserts the association key in `target` model whereas `belongsTo` inserts the association key in the `source` model.

@@ -11,7 +11,9 @@ module.exports = {
           logradouro: 'Logradouro',
           numero: 123,
           bairro: 'Bairo',
-          cep: '12345-567'
+          cep: '12345-567',
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ],
       {}

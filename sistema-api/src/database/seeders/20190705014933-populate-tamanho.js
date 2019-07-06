@@ -6,19 +6,29 @@ module.exports = {
       'tamanho',
       [
         {
-          name: 'Pequena'
+          name: 'Pequena',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
-          name: 'Media'
+          name: 'Media',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
-          name: 'Grande'
+          name: 'Grande',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
-          name: '250ml'
+          name: '250ml',
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
-          name: '1l'
+          name: '1l',
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ],
       {}
