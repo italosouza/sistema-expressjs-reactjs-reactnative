@@ -3,9 +3,11 @@ import styled from 'styled-components/native'
 export const Container = styled.ImageBackground`
   flex: 1;
   align-items: stretch;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 30px;
-  background: #7159c1;
+  background: #fff;
+  position: relative;
+  top: 0px;
 `
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: '#999'

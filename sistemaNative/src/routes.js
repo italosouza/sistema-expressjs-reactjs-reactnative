@@ -7,10 +7,10 @@ import Pedido from '~/pages/Pedido'
 
 const Routes = createAppContainer(
   createSwitchNavigator({
+    Pedido,
     Login,
     Register,
-    Main,
-    Pedido
+    Main
   })
 )
 

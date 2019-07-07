@@ -10,7 +10,7 @@ export function* loginRequest(action) {
     const { response } = yield call(api.login, data)
 
     yield put(LoginActions.loginSuccess(response))
-    navigate('Main')
+    navigate('Pedido')
   } catch (err) {
     yield put(LoginActions.loginFailure(err.data.error))
   }

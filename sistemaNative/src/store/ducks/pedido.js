@@ -2,12 +2,12 @@
  * Types
  */
 export const Types = {
-  LIST_REQUEST: 'pedidos/LIST_REQUEST',
-  LIST_SUCCESS: 'pedidos/LIST_SUCCESS',
-  LIST_FAILURE: 'pedidos/LIST_FAILURE',
-  ADD_REQUEST: 'pedidos/ADD_REQUEST',
-  ADD_SUCCESS: 'pedidos/ADD_SUCCESS',
-  ADD_FAILURE: 'pedidos/ADD_FAILURE'
+  LIST_REQUEST: 'pedido/LIST_REQUEST',
+  LIST_SUCCESS: 'pedido/LIST_SUCCESS',
+  LIST_FAILURE: 'pedido/LIST_FAILURE',
+  PEDIDO_REQUEST: 'pedido/PEDIDO_REQUEST',
+  PEDIDO_SUCCESS: 'pedido/PEDIDO_SUCCESS',
+  PEDIDO_FAILURE: 'pedido/PEDIDO_FAILURE'
 }
 
 /**
@@ -24,7 +24,7 @@ const INITIAL_STATE = {
  * @param {*} state
  * @param {*} action
  */
-export default function pedidos(state = INITIAL_STATE, action) {
+export default function pedido(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.LIST_REQUEST:
       return {
@@ -87,8 +87,8 @@ export const Creators = {
     payload: { error }
   }),
 
-  addRequest: data => ({
-    type: Types.ADD_REQUEST,
+  pedidoRequest: data => ({
+    type: Types.PEDIDO_REQUEST,
     payload: { data }
   }),
 
@@ -96,16 +96,16 @@ export const Creators = {
    * Called from Saga after Request
    * @param {*} data
    */
-  addSuccess: data => ({
-    type: Types.ADD_SUCCESS,
+  pedidoSuccess: data => ({
+    type: Types.PEDIDO_SUCCESS,
     payload: { data }
   }),
 
   /**
    *  Called from Saga after Request Failure
    */
-  addFailure: error => ({
-    type: Types.ADD_FAILURE,
+  pedidoFailure: error => ({
+    type: Types.PEDIDO_FAILURE,
     payload: { error }
   })
 }
