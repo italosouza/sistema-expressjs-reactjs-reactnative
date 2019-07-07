@@ -43,7 +43,6 @@ export const Error = styled.Text`
 `
 export const SignText = styled.Text`
   color: #fff;
-  /* margin-top: 10px; */
   margin: 20px 20px;
   text-align: center;
   font-size: 16px;

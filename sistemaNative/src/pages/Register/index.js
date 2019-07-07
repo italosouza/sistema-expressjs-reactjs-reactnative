@@ -3,7 +3,7 @@ import { ActivityIndicator } from 'react-native'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Creators as LoginActions } from '~/store/ducks/login'
+import { Creators as RegisterActions } from '~/store/ducks/register'
 
 import { navigate } from '~/services/navigation'
 
@@ -13,13 +13,13 @@ import {
   Container, Input, Button, ButtonText, Error, SignText
 } from './styles'
 
-class Login extends React.Component {
+class Register extends React.Component {
   state = { loginData: {} }
 
   handleSubmit = async () => {
     const { loginData } = this.state
-    const { loginRequest } = this.props
-    loginRequest(loginData)
+    const { registerRequest } = this.props
+    registerRequest(loginData)
   }
 
   handleChangeInput = (field, value) => {
@@ -29,17 +29,20 @@ class Login extends React.Component {
   }
 
   render() {
-    const { error, loading } = this.props.login
+    const { error, loading } = this.props.register
 
     return (
       <Container source={fundo} resizeMode="cover">
         <Input
+          autoCorrect={false}
+          placeholder="Nome completo"
+          onChangeText={text => this.handleChangeInput('name', text)}
+        />
+        <Input
           autoCapitalize="none"
           autoCorrect={false}
           placeholder="Seu e-mail"
-          name="email"
           onChangeText={text => this.handleChangeInput('email', text)}
-          required
         />
         <Input
           secureTextEntry
@@ -52,15 +55,15 @@ class Login extends React.Component {
           {loading ? (
             <ActivityIndicator size="small" color="#fff" />
           ) : (
-            <ButtonText>Entrar</ButtonText>
+            <ButtonText>Criar conta</ButtonText>
           )}
         </Button>
         <SignText
           onPress={() => {
-            navigate('Register')
+            navigate('Login')
           }}
         >
-          Criar conta gratuita
+          Ja tenho conta
         </SignText>
         {!!error && <Error>{error}</Error>}
       </Container>
@@ -69,12 +72,12 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.login
+  register: state.register
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(RegisterActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(Register)

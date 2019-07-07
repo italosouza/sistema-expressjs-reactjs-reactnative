@@ -3,7 +3,7 @@ const Joi = require('joi')
 module.exports = {
   body: {
     name: Joi.string().required(),
-    admin: Joi.boolean().required(),
+    admin: Joi.boolean(),
     email: Joi.string()
       .email()
       .required(),

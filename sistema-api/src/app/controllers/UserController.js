@@ -32,8 +32,10 @@ class UserController {
    * POST
    */
   async store(req, res) {
-    if (!req.file) {
-      return res.status(400).json({ error: 'arquivo avatar não informado' })
+    req.body.avatar = 'placeholder.png'
+    if (req.file) {
+      const { filename: avatar } = req.file
+      req.body.avatar = avatar
     }
 
     const { email } = req.body
@@ -41,8 +43,7 @@ class UserController {
       return res.status(400).json({ error: 'Usuário já cadastrado' })
     }
 
-    const { filename: avatar } = req.file
-    req.body.avatar = avatar
+    req.body.admin = req.body.admin || false
 
     const user = await User.create({ ...req.body })
     req.io.emit('user store', user)

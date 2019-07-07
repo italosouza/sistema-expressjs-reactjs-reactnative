@@ -1,30 +1,17 @@
-import { call, put, select } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import api from '~/services/api'
+import { navigate } from '~/services/navigation'
 
-import { Creators as PedidosActions } from '~/store/ducks/pedidos'
+import { Creators as LoginActions } from '~/store/ducks/login'
 
-export function* loginRequest() {
-  try {
-    const { data } = yield call(api.get, '/api/session')
-
-    yield put(PedidosActions.loginSuccess(data))
-  } catch (err) {
-    yield put(PedidosActions.loginFailure('Erro ao adicionar pedido'))
-  }
-}
-
-export function* addPedido(action) {
+export function* loginRequest(action) {
   try {
     const { data } = action.payload
+    const { response } = yield call(api.login, data)
 
-    const isDuplicated = yield select(state => state.pedidos.data.find(item => item.id === data.id))
-
-    if (isDuplicated) {
-      yield put(PedidosActions.addFailure('Pedido duplicado'))
-    } else {
-      yield put(PedidosActions.addSuccess(data))
-    }
+    yield put(LoginActions.loginSuccess(response))
+    navigate('Main')
   } catch (err) {
-    yield put(PedidosActions.addFailure('Erro ao adicionar Pedido'))
+    yield put(LoginActions.loginFailure(err.data.error))
   }
 }
