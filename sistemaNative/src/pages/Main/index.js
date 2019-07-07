@@ -53,7 +53,7 @@ const Main = () => (
     />
     <Text style={styles.welcome}>Bem-vindo!</Text>
     <Text style={styles.instructions}>
-      Essa é a tela principal da aplicação =)
+      Essa é a tela principal da aplicação. texto alterado.
     </Text>
     <Text style={styles.instructions}>Em breve teremos novidades</Text>
   </ImageBackground>

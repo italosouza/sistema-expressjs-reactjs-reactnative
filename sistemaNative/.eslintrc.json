@@ -29,11 +29,16 @@
     "react-native/no-color-literals": "off",
     "react-native/sort-styles": "off",
     "global-require": "off",
-    "react-native/no-raw-text": "off"
+    "react-native/no-raw-text": "off",
+    "semi": "off",
+    "comma-dangle": "off"
   },
   "settings": {
     "import/resolver": {
       "babel-plugin-root-import": { "rootPathSuffix": "src" }
+    },
+    "node": {
+      "paths": ["src"]
     }
   }
 }
